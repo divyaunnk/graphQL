@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import {graphqlHTTP} from "express-graphql";
-import {schema} from "./schema/schema.js"
+import schema from "./schema/schema.js";
 
 dotenv.config();
 
@@ -12,7 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/graphql', graphqlHTTP({
-    schema
+    schema,
+    graphiql:true
 }))
 
 app.listen(port, () => {
